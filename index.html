@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jolie Fleur</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      color: #222;
+    }
+
+    .hero {
+      position: relative;
+      background: url('bouquet3.jpg') center/cover no-repeat;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px 20px;
+      color: white;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 3rem;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      text-align: center;
+      padding: 40px 20px 10px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      color: #d6336c;
+    }
+
+    .section-title p {
+      max-width: 850px;
+      margin: 0 auto;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      padding: 25px 20px 50px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.3s ease;
+      background: #fff;
+    }
+
+    .card:hover img {
+      transform: scale(1.03);
+    }
+
+    .card-content {
+      padding: 16px;
+      text-align: center;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .price {
+      color: #d6336c;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .desc {
+      color: #666;
+      margin-bottom: 14px;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 11px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: #e63956;
+    }
+
+    .custom-section {
+      background: #fff0f5;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .custom-section h2 {
+      margin-top: 0;
+      color: #d6336c;
+      font-size: 2rem;
+    }
+
+    .custom-section p {
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.7;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .premium {
+      border: 3px solid gold;
+      position: relative;
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: gold;
+      color: #222;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    /* Pour les bouquets premium : on veut tout voir */
+    .premium img {
+      object-fit: contain;
+      background: #fff;
+      padding: 8px;
+      height: 320px;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 22px;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .card img,
+      .premium img {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>🌸 Jolie Fleur</h1>
+      <p>
+        Des bouquets uniques pour chaque occasion.<br>
+        Créations élégantes, romantiques et personnalisées.
+      </p>
+    </div>
+  </header>
+
+  <section class="section-title">
+    <h2>Nos bouquets</h2>
+    <p>
+      Découvrez notre sélection de bouquets préparés avec soin.
+      Vous pouvez commander directement par WhatsApp.
+    </p>
+  </section>
+
+  <div class="container">
+    <div class="card">
+      <img src="bouquet1.jpg" alt="Bouquet Élégance">
+      <div class="card-content">
+        <h3>Bouquet Élégance</h3>
+        <div class="price">À partir de 50 €</div>
+        <button class="btn" onclick="commander('Bouquet Élégance')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="bouquet2.jpg" alt="Bouquet Passion">
+      <div class="card-content">
+        <h3>Bouquet Passion</h3>
+        <div class="price">À partir de 45 €</div>
+        <button class="btn" onclick="commander('Bouquet Passion')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="bouquet4.jpg" alt="Bouquet Moderne">
+      <div class="card-content">
+        <h3>Bouquet Moderne</h3>
+        <div class="price">À partir de 35 €</div>
+        <button class="btn" onclick="commander('Bouquet Moderne')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="bouquet5.jpg" alt="Bouquet Coloré">
+      <div class="card-content">
+        <h3>Bouquet Coloré</h3>
+        <div class="price">À partir de 35 €</div>
+        <button class="btn" onclick="commander('Bouquet Coloré')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="bouquet6.jpg" alt="Bouquet Douceur">
+      <div class="card-content">
+        <h3>Bouquet Douceur</h3>
+        <div class="price">À partir de 55 €</div>
+        <button class="btn" onclick="commander('Bouquet Douceur')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+<div class="card">
+      <img src="bouquet15.png" alt="Bouquet floral coloré sur fond blanc">
+      <div class="card-content">
+        <h3>Bouquet floral coloré sur fond blanc</h3>
+        <div class="price">À partir de 35 €</div>
+        <button class="btn" onclick="commander('Bouquet floral coloré sur fond blanc')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+
+<div class="card">
+      <img src="bouquet14.png" alt="Bouquet de roses rouges élégantes">
+      <div class="card-content">
+        <h3>Bouquet de roses rouges élégantes</h3>
+        <div class="price">À partir de 50 €</div>
+        <button class="btn" onclick="commander('Bouquet de roses rouges élégantes')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+ 
+    <div class="card">
+      <img src="bouquet7.jpg" alt="Bouquet Romantique">
+      <div class="card-content">
+        <h3>Bouquet Romantique</h3>
+        <div class="price">À partir de 50 €</div>
+        <button class="btn" onclick="commander('Bouquet Romantique')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="bouquet8.jpg" alt="Roses Intenses">
+      <div class="card-content">
+        <h3>Roses Intenses</h3>
+        <div class="price">À partir de 6 € l'unité</div>
+        <button class="btn" onclick="commander('Roses Intenses')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+ <div class="card">
+      <img src="bouquet16.png" alt="Bouquet de fleurs rouges et blanches">
+      <div class="card-content">
+        <h3>Bouquet de fleurs rouges et blanches</h3>
+        <div class="price">À partir de 35 €</div>
+        <button class="btn" onclick="commander('Bouquet de fleurs rouges et blanches')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+<div class="card">
+      <img src="bouquet17.png" alt="Bouquet de fleurs coloré et raffiné">
+      <div class="card-content">
+        <h3>Bouquet de fleurs coloré et raffiné</h3>
+        <div class="price">À partir de 45 €</div>
+        <button class="btn" onclick="commander('Bouquet de fleurs coloré et raffiné')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+<div class="card">
+      <img src="bouquet18.png" alt="Bouquet de fleurs élégantes et raffinées">
+      <div class="card-content">
+        <h3>Bouquet de fleurs élégantes et raffinées</h3>
+        <div class="price">À partir de 45 €</div>
+        <button class="btn" onclick="commander('Bouquet de fleurs élégantes et raffinées')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+<div class="card">
+      <img src="bouquet19.png" alt="Bouquet Charme">
+      <div class="card-content">
+        <h3>Bouquet Charme</h3>
+        <div class="price">À partir de 45 €</div>
+        <button class="btn" onclick="commander('Bouquet Charme')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+<div class="card">
+      <img src="bouquet13.png" alt="Bouquet rose de verdures élégantes">
+      <div class="card-content">
+        <h3>Bouquet rose de verdures élégantes</h3>
+        <div class="price">À partir de 35 €</div>
+        <button class="btn" onclick="commander('Bouquet rose de verdures élégantes')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <img src="bouquet9.jpg" alt="Roses Fuchsia">
+      <div class="card-content">
+        <h3>Roses Fuchsia</h3>
+        <div class="price">À partir de 6 € l'unité</div>
+        <button class="btn" onclick="commander('Roses Fuchsia')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="bouquet10.jpg" alt="Bouquet Prestige">
+      <div class="card-content">
+        <h3>Bouquet Prestige</h3>
+        <div class="price">À partir de 35 €</div>
+        <button class="btn" onclick="commander('Bouquet Prestige')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+ <div class="card">
+      <img src="personnalise2.jpg" alt="Bouquet personnalisé rose pastel">
+      <div class="card-content">
+        <h3>Bouquet rose pastel</h3>
+        <div class="price">À partir de 35 €</div>
+        <button class="btn" onclick="commander('Bouquet rose pastel')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="card premium">
+      <div class="badge">⭐ Best seller</div>
+      <img src="bouquet11.jpg" alt="Roses Luxe">
+      <div class="card-content">
+        <h3>🌹 Roses Luxe</h3>
+        <div class="price">À partir de 65 €</div>
+        <div class="desc">Bouquet haut de gamme très demandé</div>
+        <button class="btn" onclick="commander('Roses Luxe')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+<div class="card">
+      <img src="personnalise6.jpg" alt="Bouquet rose et violet">
+      <div class="card-content">
+        <h3>Bouquet rose et violet</h3>
+        <div class="price">À partir de 50 €</div>
+        <button class="btn" onclick="commander('Bouquet rose et violet')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+
+<p>
+    <div class="card premium">
+      <div class="badge">🔥 Très demandé</div>
+      <img src="bouquet12.jpg" alt="Cœur d’Amour">
+      <div class="card-content">
+        <h3>❤️ Cœur d’Amour</h3>
+        <div class="price">À partir de 80 €</div>
+        <div class="desc">Création romantique en forme de cœur</div>
+        <button class="btn" onclick="commander('Cœur d’Amour')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+  <section class="custom-section">
+    <h2>Nous réalisons aussi des bouquets personnalisés</h2>
+    <p>
+      Chez <strong>Jolie Fleur</strong>, nous créons aussi des bouquets personnalisés selon vos envies :
+      couleurs, style, budget, occasion spéciale, lettres florales, chiffres floraux et créations sur mesure.
+      Vous pouvez nous envoyer votre demande directement sur WhatsApp.
+    </p>
+  </section>
+
+  <section class="section-title">
+    <h2>Créations personnalisées</h2>
+    <p>Quelques exemples de bouquets personnalisés réalisés sur demande.</p>
+  </section>
+
+<p>
+  <div class="container">
+    <div class="card">
+      <img src="personnalise1.jpg" alt="Bouquet personnalisé lettre K">
+      <div class="card-content">
+        <h3>Bouquet personnalisé lettre K</h3>
+        <div class="price">À partir de 45 €</div>
+        <button class="btn" onclick="commander('Bouquet personnalisé lettre K')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+   
+
+    <div class="card">
+      <img src="personnalise3.jpg" alt="Bouquet personnalisé lettre H">
+      <div class="card-content">
+        <h3>Bouquet personnalisé lettre H</h3>
+        <div class="price">À partir de 60 €</div>
+        <button class="btn" onclick="commander('Bouquet personnalisé lettre H')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+ <div class="card">
+      <img src="lettrea.png" alt="Bouquet personnalisé lettre A">
+      <div class="card-content">
+        <h3>Bouquet personnalisé lettre A</h3>
+        <div class="price">À partir de 65 €</div>
+        <button class="btn" onclick="commander('Bouquet personnalisé lettre A')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <img src="personnalise4.jpg" alt="Bouquet personnalisé lettre D">
+      <div class="card-content">
+        <h3>Bouquet personnalisé lettre D</h3>
+        <div class="price">À partir de 60 €</div>
+        <button class="btn" onclick="commander('Bouquet personnalisé lettre D')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="personnalise5.jpg" alt="Bouquet personnalisé lettre N">
+      <div class="card-content">
+        <h3>Bouquet personnalisé lettre N</h3>
+        <div class="price">À partir de 50 €</div>
+        <button class="btn" onclick="commander('Bouquet personnalisé lettre N')">Commander sur WhatsApp</button>
+      </div>
+    </div>
+  </p>
+    
+<p>© 2026 Jolie Fleur - Tous droits réservés</p>
+
+<br>
+
+<!-- FACEBOOK -->
+<a href="https://www.facebook.com/jolie.fleurs.93?mibextid=LQQJ4d" target="_blank"
+style="display:inline-block; margin:10px;">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+  style="width:40px;">
+</a>
+
+<!-- INSTAGRAM -->
+<a href="https://www.instagram.com/jolie_fleurs93?igsh=MTM1M3c3ZHBncjQzYQ%3D%3D&utm_source=qr 
+" target="_blank"
+style="display:inline-block; margin:10px;">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"
+  style="width:40px;">
+</a>
+<p>🌸 Notre passion des fleurs mise en avant</p>
+  <a href="https://lacourneuve.fr/news/2025/le-pouvoir-des-fleurs" target="_blank">
+    Voir l’article
+  </a>
+</div>
+
+</footer>
+  <script>
+    function commander(produit) {
+      const numero = "33606796886"; // remplace par ton vrai numéro WhatsApp
+      const message = "Bonjour, je souhaite commander : " + produit;
+      const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(message);
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
